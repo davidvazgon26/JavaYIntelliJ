@@ -5,8 +5,9 @@ import exercise.files.ch10.Ej10_02.model.Olive;
 
 import java.util.List;
 
-public class OlivePress {
+public class OlivePress implements Press{   //implement Press implementa la interface
 
+	private  int currentOil;
 	public int getOil(List<Olive> olives) {
 
 		int totalOil = 0;
@@ -16,6 +17,11 @@ public class OlivePress {
 
 		return totalOil;
 
+	}
+
+	@Override
+	public void setOil(int oil) {
+		currentOil = oil;
 	}
 
 }
