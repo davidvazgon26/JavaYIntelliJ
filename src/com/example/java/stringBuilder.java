@@ -20,6 +20,7 @@ public class stringBuilder {
         String input = scanner.nextLine();
         System.out.println(input);
 
+
         sb.delete(0, sb.length());
         for (int i = 0; i < 3; i++) {
             input = scanner.nextLine();
