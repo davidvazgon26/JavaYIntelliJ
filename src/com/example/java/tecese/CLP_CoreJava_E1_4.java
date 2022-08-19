@@ -1,4 +1,4 @@
-package com.example.java;
+package com.example.java.tecese;
 
 public class CLP_CoreJava_E1_4 {
 
