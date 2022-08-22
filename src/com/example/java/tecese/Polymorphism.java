@@ -1,8 +1,9 @@
 package com.example.java.tecese;
 
+import com.example.java.Prime;
+
 import java.io.*;
 import java.util.HashSet;
-
 //Una clase principal que tiene un metodo filtes que devuelve nulo (no hace nada el metodo)
 //Declarar 2 variables de tipo entero y publicas en la clase padre llamadas startElement y endElement
 class Parent{
@@ -12,25 +13,36 @@ class Parent{
         return null;
     }
 }
-
 //Clase que se extiende de Parent y anula el metodo filter o lo sobre escribe para escribir su propia version
 class ChildOne extends Parent {
-    private Boolean isPrime(int n){
-        if(n==1) return false;
-        for(int i=2;i<= Math.sqrt(n);i++)
-            if(n%i == 0) return false;
-        return true;
+
+    public static HashSet<Integer> collection(int start, int end){
+        HashSet<Integer> p = new HashSet<Integer>();
+        // recorro el rango de numeros dado
+        for (int i = start; i <= end; i++) {
+            int cont = 0;
+            // valido si son primos y si lo son los ingreso al HashSet
+            for (int j = 1; j <=i ; j++) {
+                if (i%j == 0){
+                    cont++;
+                }
+            }
+            if (cont == 2){ p.add(i);}
+        }
+        return p;
+    }
+    private Boolean isPrime(int n, HashSet<Integer> r){
+        return r.contains(n);
     }
     @Override //Sobre escribo el metodo para devolver los numeros primos
     public String filter(){
+        HashSet<Integer> r = Prime.collection(startElement, endElement);
         StringBuilder sb = new StringBuilder();
         for(int i=startElement;i<=endElement;i++)
-            if(isPrime(i)) sb.append(i+" ");
+            if(isPrime(i,r)) sb.append(i+" ");
         return sb.toString();
     }
 }
-
-
 //Clase que se extiende de Parent y anula el metodo filter o lo sobre escribe para escribir su propia version
 class ChildTwo extends Parent{
     private int sumDigitSquare(int n){
@@ -73,7 +85,10 @@ class ChildTwo extends Parent{
             // Mark n as visited
             s.add(n);
 
+       // System.out.println("Este es S:");
+      //  System.out.println(s);
         }
+
 
     }
     @Override  // Sobre escribo el metodo para devolver los numeros felices
@@ -84,7 +99,6 @@ class ChildTwo extends Parent{
         return sb.toString();
     }
 }
-
 
 public class Polymorphism {
     public static void main(String args[] ) throws Exception {
@@ -99,18 +113,18 @@ public class Polymorphism {
 //        ch2.startElement = start;
 //        ch2.endElement = end;
         ch1.startElement =  1;
-        ch1.endElement = 5555;
+        ch1.endElement = 150;
         ch2.startElement = 1;
-        ch2.endElement = 5555;
-        long total = 0;
-        int x;
-        long inicio = System.currentTimeMillis();
+        ch2.endElement = 150;
+//        long total = 0;
+//        int x;
+//        long inicio = System.currentTimeMillis();
         System.out.println(ch1.filter());
         System.out.print(ch2.filter());
-        long tiempo = System.currentTimeMillis() - inicio;
-        total += tiempo;
-        System.out.println("\n");
-        System.out.println("tardo: "+total);
+//        long tiempo = System.currentTimeMillis() - inicio;
+//        total += tiempo;
+//        System.out.println("\n");
+//        System.out.println("tardo: "+total);
 
     }
 }
@@ -163,4 +177,124 @@ public class Polymorphism {
         }
         return res;
     }
+* */
+
+// guardo todo el codigo anterior antes de modificarlo
+
+/*
+Una clase principal que tiene un metodo filtes que devuelve nulo (no hace nada el metodo)
+Declarar 2 variables de tipo entero y publicas en la clase padre llamadas startElement y endElement
+class Parent{
+    public int startElement;
+    public int endElement;
+    public String filter(){
+        return null;
+    }
+}
+
+Clase que se extiende de Parent y anula el metodo filter o lo sobre escribe para escribir su propia version
+class ChildOne extends Parent {
+    private Boolean isPrime(int n){
+        if(n==1) return false;
+        for(int i=2;i<= Math.sqrt(n);i++)
+            if(n%i == 0) return false;
+        return true;
+    }
+    @Override //Sobre escribo el metodo para devolver los numeros primos
+    public String filter(){
+        StringBuilder sb = new StringBuilder();
+        for(int i=startElement;i<=endElement;i++)
+            if(isPrime(i)) sb.append(i+" ");
+        return sb.toString();
+    }
+}
+
+
+Clase que se extiende de Parent y anula el metodo filter o lo sobre escribe para escribir su propia version
+class ChildTwo extends Parent{
+    private int sumDigitSquare(int n){
+
+        int sq = 0;
+        while (n > 0)
+        {
+            int digit = n % 10;
+            sq += digit * digit;
+            n = n / 10;
+        }
+        return sq;
+    }
+
+    private Boolean isHappy(int n) {
+         A set to store numbers during
+         repeated square sum process
+        HashSet<Integer> s = new HashSet<Integer>();
+        s.add(n);
+
+         Keep replacing n with sum of
+         squares of digits until we either
+         reach 1 or we endup in a cycle
+        while (true)
+        {
+
+             Number is Happy if we reach 1
+            if (n == 1)
+                return true;
+
+             Replace n with sum of squares
+             of digits
+            n = sumDigitSquare(n);
+
+             If n is already visited, a cycle
+             is formed, means not Happy
+            if ((s.contains(n) && n != (int)s.toArray()[ s.size()-1 ] ))
+                return false;
+
+             Mark n as visited
+            s.add(n);
+
+        System.out.println("Este es S:");
+        System.out.println(s);
+        }
+
+
+    }
+    @Override   Sobre escribo el metodo para devolver los numeros felices
+    public String filter(){
+        StringBuilder sb = new StringBuilder();
+        for(int i=startElement;i<=endElement;i++)
+            if(isHappy(i)) sb.append(i+" ");
+        return sb.toString();
+    }
+}
+
+
+public class Polymorphism {
+    public static void main(String args[] ) throws Exception {
+         Enter your code here. Read input from STDIN. Print output to STDOUT
+  BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+ int start = Integer.parseInt(br.readLine());
+   int end = Integer.parseInt(br.readLine());
+ChildOne ch1 = new ChildOne();
+    ChildTwo ch2 = new ChildTwo();
+       ch1.startElement =  start;
+       ch1.endElement = end;
+        ch2.startElement = start;
+       ch2.endElement = end;
+        ch1.startElement =  1;
+                ch1.endElement = 150;
+                ch2.startElement = 1;
+                ch2.endElement = 150;
+                long total = 0;
+                int x;
+                long inicio = System.currentTimeMillis();
+                System.out.println(ch1.filter());
+                System.out.print(ch2.filter());
+                long tiempo = System.currentTimeMillis() - inicio;
+                total += tiempo;
+                System.out.println("\n");
+                System.out.println("tardo: "+total);
+
+                }
+                }
+*
 * */
