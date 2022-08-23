@@ -1,0 +1,62 @@
+1.- Paquetes
+
+Encontrar el código secreto usando paquetes
+
+Dos amigos A y B conversan por teléfono. Aunque parece una conversación normal, en secreto comparten una contraseña.
+
+Hay algunos números mencionados en la conversación en forma de dígitos. Debe obtener todos los números de la
+conversación, verificar si el número es compuesto de Keith o no, y luego concatenar esos números.
+
+Además, los números del 1 al 9 presentes en forma de texto (uno, dos, tres, etc.) deben transformarse en
+formato numérico. Agregue todos esos números y concatene la suma finalmente con el número compuesto de
+Keith extraído previamente. Encuentre el código secreto y devuélvalo en formato de cadena mediante Paquetes.
+
+Realiza las operaciones de dos formas, numérica y de cadena en dos paquetes diferentes.
+
+Crear un código de carpeta en la carpeta Java
+
+(/proyectos/desafío/FindSecretCode/src/main/java/). En la carpeta de código, cree dos carpetas de números y cadena.
+ El código/números se refiere al paquete "/código.números/" se refiere al paquete "/código.números/", y el
+ código/cadena se refiere al paquete código.cadena.
+
+Operaciones de cadenas: agrega dígitos que están en forma de texto (por ejemplo, tres) y extrae dígitos que están
+en forma numérica (por ejemplo, 56). Esta lógica debe escribirse en el archivo extractString.java dentro del
+paquete code.string.
+
+Operaciones numéricas: compruebe si los números extraídos son compuestos de Keith o no. Esta lógica debe escribirse
+ en el archivo "NumberFinder.java" dentro del paquete "/code.number/".
+
+Llame a la función que contiene las operaciones numéricas y de cadena en la función gerInput(Conversación de cadena), presente el archivo KeigthClass.java importando esos paquetes y devuelva el código secreto resultante en formato de cadena.
+
+La conversación variable contiene la entrada (conversación entre A y B) en formato de cadena.
+
+Entrada de muestra:
+
+A Hola, Priya 3 al habla. ¿Es este Aditi?
+
+B: ¡Sí Priy! Estoy allí 28.
+
+R: ¿Cómo estás cariño?
+
+B: Estoy bien 19. ¿Y tú Priya 75?
+
+R: ¡Me alegra escuchar eso! ¡Yo también bien! Siete. Aditi, ¿cómo van tus cinco vacaciones?
+
+B ¡Gran Priya! ¡Estoy disfrutando bien!
+
+Salida de muestra:
+
+287512
+
+Explicación:
+
+A partir de los datos de entrada, los dígitos descifrados son 3, 28, 19, 75. De estos, 28 y 75 son
+números compuestos de Keitih. Los números en la siguiente forma son siete y cinco, y la suma de estos números
+es 12. La concatenación de estos números es 287512, que es el código secreto.
+
+Un número de Keith es un número entero N de n dígitos tal que si se forma una secuencia similar a Fibonacci
+(en la que cada término de la secuencia es la suma de los n términos anteriores) con los primeros n términos
+tomados como los dígitos decimales del número N, N en sí aparece como un término en la secuencia. Por ejemplo,
+197 es un número de Leith ya que genera la secuencia (ejemplo numerosos).
+
+Los números de Keith también se llaman repfigit.
