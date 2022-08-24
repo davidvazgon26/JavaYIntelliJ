@@ -1,6 +1,4 @@
-package com.example.java.tecese;
-
-import java.util.Scanner;
+package com.example.java.tecese.Exceptions;
 
 class Encrypter {
     public static String encryptMessage(String name) throws InvalidMessageException{
@@ -23,12 +21,13 @@ class Validator {
     }
 }
 
-//Solutions
-public class Exceptions {
-    private static final Scanner INPUT_READER = new Scanner(System.in);
-
+public class SolutionExceptions {
+//    private static final Scanner INPUT_READER = new Scanner(System.in);
+//
     public static void main(String[] args) {
-        String message = INPUT_READER.nextLine();
+//        String message = INPUT_READER.nextLine();
+
+    String message = "Kate Winslet";
 
         try {
             String encrypted_message = Encrypter.encryptMessage(message);
@@ -39,4 +38,3 @@ public class Exceptions {
         }
     }
 }
-
